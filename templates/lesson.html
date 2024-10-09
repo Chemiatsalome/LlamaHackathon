@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ lesson_title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .lesson-content {
+            padding: 10px;
+            background-color: #e9f7e9;
+            border: 1px solid #d4edda;
+            border-radius: 5px;
+        }
+
+        .quiz {
+            margin-top: 20px;
+        }
+
+        .quiz-question {
+            margin-bottom: 10px;
+        }
+
+        .quiz button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .quiz button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>{{ lesson_title }}</h1>
+
+    <div class="lesson-content">
+        <p>{{ lesson_content }}</p>
+    </div>
+
+    <div class="quiz">
+        <form method="POST" action="/quiz">
+            <div class="quiz-question">
+                <p>{{ quiz_question }}</p>
+                <input type="radio" id="option1" name="answer" value="option1"> {{ option1 }}<br>
+                <input type="radio" id="option2" name="answer" value="option2"> {{ option2 }}<br>
+                <input type="radio" id="option3" name="answer" value="option3"> {{ option3 }}<br>
+            </div>
+
+            <button type="submit">Submit Answer</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

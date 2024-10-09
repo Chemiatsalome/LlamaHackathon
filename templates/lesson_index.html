@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+</head>
+<body>
+    <h1>Quiz Results</h1>
+    
+    <!-- The result message would be rendered here based on the quiz submission -->
+    <p>Your answer: {{ user_answer }}</p>
+
+    <!-- Depending on the answer, you can show feedback -->
+    <p>
+        {% if user_answer == "option2" %}
+            Correct! You can proceed to the next lesson.
+        {% else %}
+            Oops! That's not quite right. Try again.
+        {% endif %}
+    </p>
+    
+    <!-- Link to either the next lesson or a retry page -->
+    {% if user_answer == "option2" %}
+        <a href="{{ url_for('start_learning', lesson_index=lesson_index + 1) }}">Next Lesson</a>
+    {% else %}
+        <a href="{{ url_for('start_learning', lesson_index=lesson_index) }}">Retry</a>
+    {% endif %}
+</body>
+</html>
